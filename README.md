@@ -5,7 +5,7 @@ djangdock.
 > author: hyano@ampware.jp
 
 ## OVERVIEW
-The Docker boilerplate for Django.
+The Docker boilerplate for Django x Nginx x PostgreSQL.
 
 ### Composition.
 - nginx 1.15.6
