@@ -22,7 +22,7 @@ The Docker boilerplate for Django x Nginx x PostgreSQL.
 [app]
   /app
     /static
-    /django
+    /djangdock
       /app1
       /app2
       /app3
@@ -38,7 +38,6 @@ The Docker boilerplate for Django x Nginx x PostgreSQL.
 ```
 
 
-
 ------
 
 
@@ -51,27 +50,28 @@ $ cp .env.development .env
 $ vi .env
 
 # Install django.
-$ docker-compose run --rm app django-admin startproject django .
+$ docker-compose run --rm app django-admin startproject djangdock .
 # If building onto Linux, execute this.
 $ sudo chown -R $USER:$USER .
 
 # Fix settings.
-$ vi django/settings.py
-> import os
-> ...
+$ vi djangdock/settings.py
+> SECRET_KEY = os.environ['SECRET_KEY']
+> DEBUG = eval(os.environ['DEBUG'])
+> ALLOWED_HOSTS = [os.environ['DOMAIN']]
 > DATABASES = {
->   'default': {
->     'ENGINE': 'django.db.backends.postgresql_psycopg2',
->     'NAME': os.environ['POSTGRES_USER'],
->     'USER': os.environ['POSTGRES_USER'],
->     'PASSWORD': os.environ['POSTGRES_PASSWORD'],
->     'HOST': os.environ['DATABASE_HOST'],
->     'PORT': os.environ['DATABASE_PORT'],
->     'OPTIONS': {
->       'charset': 'utf8mb4',
->     },
->   }
+>     'default': {
+>         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+>         'NAME': os.environ['POSTGRES_USER'],
+>         'USER': os.environ['POSTGRES_USER'],
+>         'PASSWORD': os.environ['POSTGRES_PASSWORD'],
+>         'HOST': os.environ['DATABASE_HOST'],
+>         'PORT': os.environ['DATABASE_PORT'],
+>     }
 > }
+> TIME_ZONE = os.environ['TZ']
+> STATIC_URL = '/static/'
+> STATIC_ROOT = '/static'
 
 # Build containers.
 $ docker-compose build
@@ -82,4 +82,34 @@ $ docker-compose run --rm app ./manage.py migrate
 
 # Deploy containers.
 $ docker-compose up -d
+```
+
+
+------
+
+
+## Deployment
+```
+$ docker-compose up     # Attach mode.
+$ docker-compose up -d  # Detach mode.
+
+# Accessing to docker-machine IP via 80 or 443 port by your browser.
+# Retry after one moment please if you received 5xx response.
+```
+
+### Commands
+```
+# Launch bash.
+$ docker-compose exec app bash
+
+# Shutdown containers.
+$ docker-compose down
+
+# Re-setup Database.
+
+# Clear log / cache.
+
+# Add Packages.
+$ vi .docker/app/requirements.txt
+$ docker-compose build
 ```
