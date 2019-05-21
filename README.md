@@ -53,6 +53,7 @@ $ cp .env.development .env
 $ vi .env
 
 # Install django.
+$ docker-compose build
 $ docker-compose run --rm app django-admin startproject djangdock .
 # If building onto Linux, execute this.
 $ sudo chown -R $USER:$USER .
