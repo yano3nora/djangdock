@@ -5,15 +5,18 @@ djangdock.
 > author: hyano@ampware.jp
 
 ## OVERVIEW
-The Docker boilerplate for Django x Nginx x PostgreSQL.
+The Docker boilerplate for Django x Nginx x PostgreSQL x Redis.
 
 ### Composition.
 - nginx 1.15.6
 - postgres 11
+- redis 5.0.3
 - python 3.7
 
 ### Containers.
 ```
+[redis]
+  /data
 [db]
   /var
     /lib
