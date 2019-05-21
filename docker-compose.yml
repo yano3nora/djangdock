@@ -18,6 +18,7 @@ services:
       context: ./.docker/web
       args:
         DOMAIN: $DOMAIN
+        CREDENTIAL: $CREDENTIAL
     env_file: .env
     ports:
       - "80:80"
