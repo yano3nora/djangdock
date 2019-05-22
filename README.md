@@ -65,9 +65,9 @@ $ vi djangdock/settings.py
 > DATABASES = {
 >     'default': {
 >         'ENGINE': 'django.db.backends.postgresql_psycopg2',
->         'NAME': os.environ['POSTGRES_USER'],
->         'USER': os.environ['POSTGRES_USER'],
->         'PASSWORD': os.environ['POSTGRES_PASSWORD'],
+>         'NAME': os.environ['DATABASE_USER'],
+>         'USER': os.environ['DATABASE_USER'],
+>         'PASSWORD': os.environ['DATABASE_PASSWORD'],
 >         'HOST': os.environ['DATABASE_HOST'],
 >         'PORT': os.environ['DATABASE_PORT'],
 >     }
