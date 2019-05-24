@@ -59,18 +59,14 @@ $ sudo chown -R $USER:$USER .
 
 # Fix settings.
 $ vi djangdock/settings.py
+> import os
+> import dj_database_url
+> 
 > SECRET_KEY = os.environ['SECRET_KEY']
 > DEBUG = eval(os.environ['DEBUG'])
 > ALLOWED_HOSTS = [os.environ['DOMAIN']]
 > DATABASES = {
->     'default': {
->         'ENGINE': 'django.db.backends.postgresql_psycopg2',
->         'NAME': os.environ['DATABASE_USER'],
->         'USER': os.environ['DATABASE_USER'],
->         'PASSWORD': os.environ['DATABASE_PASSWORD'],
->         'HOST': os.environ['DATABASE_HOST'],
->         'PORT': os.environ['DATABASE_PORT'],
->     }
+>     'default': dj_database_url.parse(os.environ['DATABASE_URL'], conn_max_age=600)
 > }
 > TIME_ZONE = os.environ['TZ']
 > STATIC_URL = '/static/'
