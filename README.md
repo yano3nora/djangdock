@@ -78,11 +78,12 @@ $ docker-compose build
 # Deploy containers.
 $ docker-compose up -d
 
-# Create databases, and collect admin static files.
+# Setup Django.
 $ docker-compose exec app bash
 $ python manage.py makemigrations
 $ python manage.py migrate
 $ python manage.py collectstatic
+$ python manage.py createsuperuser
 ```
 
 
