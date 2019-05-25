@@ -70,17 +70,19 @@ $ vi djangdock/settings.py
 > }
 > TIME_ZONE = os.environ['TZ']
 > STATIC_URL = '/static/'
-> STATIC_ROOT = '/static'
+> STATIC_ROOT = '/app/static'
 
 # Build containers.
 $ docker-compose build
 
-# Create databases.
-$ docker-compose run --rm app ./manage.py makemigrations
-$ docker-compose run --rm app ./manage.py migrate
-
 # Deploy containers.
 $ docker-compose up -d
+
+# Create databases, and collect admin static files.
+$ docker-compose exec app bash
+$ python manage.py makemigrations
+$ python manage.py migrate
+$ python manage.py collectstatic
 ```
 
 
