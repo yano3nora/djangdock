@@ -73,6 +73,7 @@ $ vi djangdock/settings.py
 >     'default': dj_database_url.parse(os.environ['DATABASE_URL'], conn_max_age=600)
 > }
 > TIME_ZONE = os.environ['TZ']
+> LANGUAGE_CODE = os.environ['LANGUAGE_CODE']
 > STATIC_URL = '/static/'
 > STATIC_ROOT = '/app/static'
 > EMAIL_BACKEND = os.environ['EMAIL_BACKEND']
