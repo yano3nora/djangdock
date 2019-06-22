@@ -64,7 +64,11 @@ $ vi djangdock/settings.py
 >
 > SECRET_KEY = os.environ['SECRET_KEY']
 > DEBUG = eval(os.environ['DEBUG'])
-> ALLOWED_HOSTS = [os.environ['DOMAIN']]
+> ALLOWED_HOSTS = [os.environ['DOMAIN'], 'localhost', '127.0.0.1']
+> INSTALLED_APPS = [
+>     # ...
+>     'django_extensions',
+> ]
 > DATABASES = {
 >     'default': dj_database_url.parse(os.environ['DATABASE_URL'], conn_max_age=600)
 > }
