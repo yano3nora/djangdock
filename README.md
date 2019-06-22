@@ -75,6 +75,12 @@ $ vi djangdock/settings.py
 > TIME_ZONE = os.environ['TZ']
 > STATIC_URL = '/static/'
 > STATIC_ROOT = '/app/static'
+> EMAIL_BACKEND = os.environ['EMAIL_BACKEND']
+> EMAIL_HOST = os.environ['EMAIL_HOST']
+> EMAIL_PORT = os.environ['EMAIL_PORT']
+> EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+> EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+> EMAIL_USE_TLS = eval(os.environ['EMAIL_USE_TLS'])
 
 # Build containers.
 $ docker-compose build
