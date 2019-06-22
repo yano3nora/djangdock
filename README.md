@@ -61,7 +61,7 @@ $ sudo chown -R $USER:$USER .
 $ vi djangdock/settings.py
 > import os
 > import dj_database_url
-> 
+>
 > SECRET_KEY = os.environ['SECRET_KEY']
 > DEBUG = eval(os.environ['DEBUG'])
 > ALLOWED_HOSTS = [os.environ['DOMAIN']]
@@ -108,8 +108,15 @@ $ docker-compose exec app bash
 $ docker-compose down
 
 # Re-setup Database.
+$ docker-compose exec app bash
+$ python manage.py reset_db --noinput
+$ python manage.py migrate
 
 # Clear log / cache.
+$ docker-compose exec app bash
+$ python manage.py shell
+> from django.core.cache import cache
+> cache.clear()
 
 # Add Packages.
 $ vi .docker/app/requirements.txt
