@@ -1,4 +1,5 @@
-Django
-psycopg2
+django
 uwsgi
+psycopg2
 dj-database-url
+django_extensions
