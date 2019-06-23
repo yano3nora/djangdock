@@ -64,6 +64,7 @@ $ vi djangdock/settings.py
 > SECRET_KEY = os.environ['SECRET_KEY']
 > DEBUG = eval(os.environ['DEBUG'])
 > ALLOWED_HOSTS = [os.environ['DOMAIN'], 'localhost', '127.0.0.1']
+> CSRF_TRUSTED_ORIGINS = [os.environ['DOMAIN'], 'localhost:3000']  # For dev.
 > INSTALLED_APPS = [
 >     # ...
 >     'django_extensions',
