@@ -120,9 +120,8 @@ $ docker-compose exec app bash
 $ docker-compose down
 
 # Re-setup Database.
-$ docker-compose exec app bash
-$ python manage.py reset_db --noinput
-$ python manage.py migrate
+$ docker-compose run --rm app python manage.py reset_db --noinput
+$ docker-compose run --rm app python manage.py migrate
 
 # Clear log / cache.
 $ docker-compose exec app bash
