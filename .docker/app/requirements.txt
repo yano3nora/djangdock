@@ -3,3 +3,4 @@ uwsgi
 psycopg2
 dj-database-url
 django_extensions
+PyYAML
