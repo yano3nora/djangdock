@@ -69,7 +69,7 @@ $ vi djangdock/settings.py
 >     # ...
 >     'django_extensions',
 > ]
-> AUTH_USER_MODEL = ''  # Todo after startapp.
+> # AUTH_USER_MODEL = ''  # Todo after startapp.
 > DATABASES = {
 >     'default': dj_database_url.parse(os.environ['DATABASE_URL'], conn_max_age=600)
 > }
